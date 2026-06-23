@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nexora Labs | Transforming Digital Experiences</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131313",
+                        "outline": "#908fa0",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-bright": "#3a3939",
+                        "surface-container-low": "#1c1b1b",
+                        "on-background": "#e5e2e1",
+                        "tertiary-container": "#d97721",
+                        "on-primary-fixed": "#07006c",
+                        "on-primary-container": "#0d0096",
+                        "background": "#131313",
+                        "secondary-container": "#6f00be",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-variant": "#353534",
+                        "on-error": "#690005",
+                        "primary-container": "#8083ff",
+                        "inverse-primary": "#494bd6",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed": "#2c0051",
+                        "tertiary": "#ffb783",
+                        "surface-container-highest": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "outline-variant": "#464554",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#c7c4d7",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#452000",
+                        "secondary": "#ddb7ff",
+                        "on-primary": "#1000a9",
+                        "on-secondary-container": "#d6a9ff",
+                        "primary": "#c0c1ff",
+                        "secondary-fixed": "#f0dbff",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-secondary": "#490080",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface": "#131313",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "on-tertiary": "#4f2500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(192, 193, 255, 0.3);
+            transform: translateY(-8px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #c0c1ff 0%, #ddb7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .primary-gradient {
+            background: linear-gradient(135deg, #6f00be 0%, #494bd6 100%);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #464554;
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-body-md antialiased">
+    <!-- Global Immersive Background -->
+    <!-- STITCH_SHADER_START:ANIMATION_3 class="mesh-bg" -->
+    <div class="mesh-bg" style="display:block;">
+        <canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
+        <script>
+                (function () {
+                    const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+
+                    // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+                    // This fires on initial layout and whenever the element is resized.
+                    function syncSize() {
+                        const w = canvas.clientWidth || 1280;
+                        const h = canvas.clientHeight || 720;
+                        if (canvas.width !== w || canvas.height !== h) {
+                            canvas.width = w;
+                            canvas.height = h;
+                        }
+                    }
+                    if (typeof ResizeObserver !== 'undefined') {
+                        new ResizeObserver(syncSize).observe(canvas);
+                    }
+                    syncSize();
+
+                    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                    if (!gl) return;
+                    const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+                    const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 centered_uv = uv * 2.0 - 1.0;
+    centered_uv.x *= u_resolution.x / u_resolution.y;
+
+    float t = u_time * 0.2;
+    
+    // Create a flowing, ethereal dark gradient with purple/blue hues
+    vec3 color1 = vec3(0.02, 0.02, 0.05); // Deep Black/Blue
+    vec3 color2 = vec3(0.1, 0.05, 0.2);   // Deep Purple
+    vec3 color3 = vec3(0.05, 0.1, 0.2);   // Deep Indigo
+    
+    float noise = sin(centered_uv.x * 2.0 + t) * cos(centered_uv.y * 2.0 - t);
+    noise += sin(centered_uv.y * 3.0 + t * 0.5) * cos(centered_uv.x * 1.5 + t);
+    
+    vec3 finalColor = mix(color1, color2, 0.5 + 0.5 * sin(noise + t));
+    finalColor = mix(finalColor, color3, 0.5 + 0.5 * cos(noise * 0.5 - t * 0.3));
+    
+    // Add subtle grain
+    float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+    finalColor += grain * 0.02;
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+                    function cs(type, src) {
+                        const s = gl.createShader(type);
+                        gl.shaderSource(s, src);
+                        gl.compileShader(s);
+                        return s;
+                    }
+                    const prog = gl.createProgram();
+                    gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+                    gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+                    gl.linkProgram(prog);
+                    gl.useProgram(prog);
+                    const buf = gl.createBuffer();
+                    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+                    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+                    const pos = gl.getAttribLocation(prog, 'a_position');
+                    gl.enableVertexAttribArray(pos);
+                    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+                    const uTime = gl.getUniformLocation(prog, 'u_time');
+                    const uRes = gl.getUniformLocation(prog, 'u_resolution');
+                    const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+                    // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+                    // Shaders that need normalized coords should use: u_mouse / u_resolution.
+                    let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+                    window.addEventListener('mousemove', (event) => {
+                        const rect = canvas.getBoundingClientRect();
+                        if (rect.width && rect.height) {
+                            const nx = (event.clientX - rect.left) / rect.width;
+                            const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+                            mouse.x = nx * canvas.width;
+                            mouse.y = ny * canvas.height;
+                        }
+                    });
+
+                    function render(t) {
+                        if (typeof ResizeObserver === 'undefined') syncSize();
+                        gl.viewport(0, 0, canvas.width, canvas.height);
+                        if (uTime) gl.uniform1f(uTime, t * 0.001);
+                        if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+                        if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+                        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                        requestAnimationFrame(render);
+                    }
+                    render(0);
+                })();
+        </script>
+    </div>
+    <!-- STITCH_SHADER_END:ANIMATION_3 -->
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+        <div class="flex justify-between items-center px-6 md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <div class="font-display-lg text-[24px] md:text-display-lg tracking-tighter text-primary cursor-pointer select-none hover:opacity-80 transition-opacity" id="nav-logo">
+                Nexora Labs
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="nav-link text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-all duration-200 border-b-2 border-transparent pb-1"
+                    href="#solutions">Solutions</a>
+                <a class="nav-link text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-all duration-200 border-b-2 border-transparent pb-1"
+                    href="#projects">Labs</a>
+                <a class="nav-link text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-all duration-200 border-b-2 border-transparent pb-1"
+                    href="#projects">Case Studies</a>
+                <a class="nav-link text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-all duration-200 border-b-2 border-transparent pb-1"
+                    href="#projects">Ecosystem</a>
+                <a class="nav-link text-on-surface-variant hover:text-on-surface font-body-md text-body-md transition-all duration-200 border-b-2 border-transparent pb-1"
+                    href="#about">Company</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="get-started-nav-btn"
+                    class="primary-gradient px-6 py-2.5 rounded-full text-on-primary font-body-md font-semibold hover:scale-105 active:scale-95 transition-transform duration-200">
+                    Get Started
+                </button>
+                <button id="mobile-menu-toggle" class="md:hidden text-on-surface hover:text-primary focus:outline-none flex items-center justify-center p-1 rounded-lg hover:bg-white/5 transition-all" aria-label="Toggle Mobile Menu">
+                    <span class="material-symbols-outlined text-[32px] leading-none" id="mobile-menu-icon">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-surface/95 backdrop-blur-2xl transition-all duration-300 max-h-0 overflow-hidden">
+            <div class="flex flex-col space-y-4 px-6 py-6 font-body-md">
+                <a class="mobile-nav-link text-on-surface-variant hover:text-on-surface transition-colors" href="#solutions">Solutions</a>
+                <a class="mobile-nav-link text-on-surface-variant hover:text-on-surface transition-colors" href="#projects">Labs</a>
+                <a class="mobile-nav-link text-on-surface-variant hover:text-on-surface transition-colors" href="#projects">Case Studies</a>
+                <a class="mobile-nav-link text-on-surface-variant hover:text-on-surface transition-colors" href="#projects">Ecosystem</a>
+                <a class="mobile-nav-link text-on-surface-variant hover:text-on-surface transition-colors" href="#about">Company</a>
+                <button id="mobile-get-started-btn" class="primary-gradient w-full py-3 rounded-xl text-on-primary font-semibold hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 mt-2">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero"
+            class="relative min-h-[921px] flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop py-20 overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none opacity-60">
+                <!-- STITCH_THREEJS_START:ANIMATION_2 class="w-full h-full" -->
+                <div class="w-full h-full" style="display:block;">
+                    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+                    <div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+                    <script>
+                        (function () {
+                            const container = document.getElementById('threejs-container-ANIMATION_2');
+                            const devicePixelRatio = window.devicePixelRatio || 1;
+                            const width = container.clientWidth || window.innerWidth;
+                            const height = container.clientHeight || window.innerHeight;
+
+                            const scene = new THREE.Scene();
+                            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+                            camera.position.z = 5;
+
+                            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                            renderer.setSize(width, height);
+                            renderer.setPixelRatio(window.devicePixelRatio);
+                            container.appendChild(renderer.domElement);
+
+                            // Create a futuristic floating geometry (Abstract Tech Core)
+                            const geometry = new THREE.IcosahedronGeometry(2, 2);
+                            const material = new THREE.MeshPhongMaterial({
+                                color: 0x6366f1,
+                                wireframe: true,
+                                transparent: true,
+                                opacity: 0.4,
+                                shininess: 100
+                            });
+
+                            const core = new THREE.Mesh(geometry, material);
+                            scene.add(core);
+
+                            // Inner solid core
+                            const innerGeo = new THREE.IcosahedronGeometry(0.8, 1);
+                            const innerMat = new THREE.MeshStandardMaterial({
+                                color: 0xa855f7,
+                                emissive: 0x6366f1,
+                                emissiveIntensity: 2,
+                                metalness: 0.8,
+                                roughness: 0.2
+                            });
+                            const innerCore = new THREE.Mesh(innerGeo, innerMat);
+                            scene.add(innerCore);
+
+                            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                            scene.add(ambientLight);
+
+                            const pointLight = new THREE.PointLight(0x6366f1, 2, 10);
+                            pointLight.position.set(5, 5, 5);
+                            scene.add(pointLight);
+
+                            function animate() {
+                                requestAnimationFrame(animate);
+
+                                core.rotation.x += 0.002;
+                                core.rotation.y += 0.003;
+
+                                innerCore.rotation.x -= 0.005;
+                                innerCore.rotation.y -= 0.005;
+
+                                const time = Date.now() * 0.001;
+                                innerCore.position.y = Math.sin(time) * 0.2;
+                                core.position.y = Math.sin(time * 0.5) * 0.1;
+
+                                renderer.render(scene, camera);
+                            }
+
+                            window.addEventListener('resize', () => {
+                                const newWidth = container.clientWidth || window.innerWidth;
+                                const newHeight = container.clientHeight || window.innerHeight;
+                                camera.aspect = newWidth / newHeight;
+                                camera.updateProjectionMatrix();
+                                renderer.setSize(newWidth, newHeight);
+                            });
+
+                            animate();
+                        })();
+                    </script>
+                </div>
+                <!-- STITCH_THREEJS_END:ANIMATION_2 -->
+            </div>
+            <div class="relative z-10 max-w-4xl text-center">
+                <span
+                    class="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm uppercase tracking-widest mb-6">
+                    Tomorrow's Tech, Built Today
+                </span>
+                <h1
+                    class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight mb-8">
+                    Transforming Ideas Into <span class="gradient-text">Intelligent Digital</span> Experiences
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
+                    Nexora Labs leverages frontier AI and premium engineering to craft high-performance digital
+                    ecosystems for visionary global brands.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button id="hero-launch-btn"
+                        class="primary-gradient px-8 py-4 rounded-xl text-on-primary font-semibold flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(111,0,190,0.4)] transition-all">
+                        Launch Project
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button id="hero-view-ecosystem-btn"
+                        class="glass-card px-8 py-4 rounded-xl text-on-surface font-semibold hover:bg-white/10 transition-all">
+                        View Ecosystem
+                    </button>
+                </div>
+            </div>
+            <!-- Floating Statistics Cards -->
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+                <div class="glass-card p-8 rounded-2xl flex flex-col items-center text-center">
+                    <span class="text-display-lg-mobile font-display-lg text-primary counter" data-target="120">0</span>
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-2">Projects
+                        Completed</span>
+                </div>
+                <div class="glass-card p-8 rounded-2xl flex flex-col items-center text-center">
+                    <span class="text-display-lg-mobile font-display-lg text-primary counter" data-target="50">0</span>
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-2">Enterprise
+                        Clients</span>
+                </div>
+                <div class="glass-card p-8 rounded-2xl flex flex-col items-center text-center">
+                    <span class="text-display-lg-mobile font-display-lg text-primary counter" data-target="98">0</span>
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-2">Client
+                        Satisfaction</span>
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section id="about" class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-reveal">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-8">
+                        Who <span class="text-primary">We Are</span>
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
+                        At Nexora Labs, we don't just build software; we forge digital alchemy. Our team of senior
+                        architects and AI researchers work at the intersection of aesthetic brilliance and technical
+                        supremacy.
+                    </p>
+                    <p class="font-body-md text-body-md text-outline mb-10">
+                        Founded in 2020, we've pivoted from a boutique dev shop to an innovation powerhouse, redefining
+                        how humans interact with digital surfaces through predictive intelligence and fluid UI.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="p-3 bg-surface-container rounded-lg border border-outline-variant">
+                            <span class="material-symbols-outlined text-primary">verified</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-on-surface">ISO 27001 Certified</h4>
+                            <p class="text-sm text-outline">Meeting global security standards</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 grid grid-cols-1 gap-6">
+                    <div class="glass-card p-8 rounded-2xl border-l-4 border-l-primary">
+                        <h3 class="font-headline-md text-2xl mb-4">Innovation</h3>
+                        <p class="text-on-surface-variant">Pushing boundaries through R&amp;D in neural networks and
+                            distributed systems to stay three steps ahead.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl border-l-4 border-l-secondary">
+                        <h3 class="font-headline-md text-2xl mb-4">Excellence</h3>
+                        <p class="text-on-surface-variant">Meticulous attention to detail in every line of code and
+                            pixel-perfect UI execution.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl border-l-4 border-l-tertiary">
+                        <h3 class="font-headline-md text-2xl mb-4">Integrity</h3>
+                        <p class="text-on-surface-variant">Radical transparency in our process and unyielding commitment
+                            to data privacy and ethical AI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section id="solutions" class="py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest scroll-reveal">
+            <div class="max-w-container-max mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="font-display-lg-mobile md:font-headline-md text-headline-md mb-4 text-on-surface">Our
+                        Core <span class="text-primary">Capabilities</span></h2>
+                    <p class="text-on-surface-variant max-w-xl mx-auto font-body-md">Modular solutions designed for
+                        enterprise scalability and high-velocity growth.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="glass-card p-10 rounded-[2rem] group relative overflow-hidden service-card cursor-pointer animate-on-hover" data-service-id="1">
+                        <div
+                            class="mb-6 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl"
+                                data-icon="psychology">psychology</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">AI &amp; Machine Learning</h3>
+                        <p class="text-on-surface-variant mb-6">Custom LLMs, predictive analytics, and computer vision
+                            models integrated seamlessly into your workflow.</p>
+                        <span class="text-primary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore Service <span class="material-symbols-outlined">east</span></span>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="glass-card p-10 rounded-[2rem] group relative overflow-hidden service-card cursor-pointer animate-on-hover" data-service-id="2">
+                        <div
+                            class="mb-6 w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                            <span class="material-symbols-outlined text-secondary text-3xl"
+                                data-icon="terminal">terminal</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Web Engineering</h3>
+                        <p class="text-on-surface-variant mb-6">High-performance web applications built with Next.js,
+                            Rust, and distributed architectures for speed.</p>
+                        <span class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore Service <span class="material-symbols-outlined">east</span></span>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="glass-card p-10 rounded-[2rem] group relative overflow-hidden service-card cursor-pointer animate-on-hover" data-service-id="3">
+                        <div
+                            class="mb-6 w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center group-hover:bg-tertiary/20 transition-colors">
+                            <span class="material-symbols-outlined text-tertiary text-3xl"
+                                data-icon="smartphone">smartphone</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Mobile Experiences</h3>
+                        <p class="text-on-surface-variant mb-6">Native and cross-platform mobile solutions that
+                            prioritize fluid gestures and offline-first performance.</p>
+                        <span class="text-tertiary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore Service <span class="material-symbols-outlined">east</span></span>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="glass-card p-10 rounded-[2rem] group relative overflow-hidden service-card cursor-pointer animate-on-hover" data-service-id="4">
+                        <div
+                            class="mb-6 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl"
+                                data-icon="palette">palette</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Premium UI/UX</h3>
+                        <p class="text-on-surface-variant mb-6">Experience design that balances digital alchemy with
+                            human-centric usability for elite software products.</p>
+                        <span class="text-primary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore Service <span class="material-symbols-outlined">east</span></span>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="glass-card p-10 rounded-[2rem] group relative overflow-hidden service-card cursor-pointer animate-on-hover" data-service-id="5">
+                        <div
+                            class="mb-6 w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                            <span class="material-symbols-outlined text-secondary text-3xl"
+                                data-icon="auto_mode">auto_mode</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Automation</h3>
+                        <p class="text-on-surface-variant mb-6">Intelligent robotic process automation (RPA) that
+                            eliminates friction from your operational pipelines.</p>
+                        <span class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore Service <span class="material-symbols-outlined">east</span></span>
+                    </div>
+                    <!-- Service 6 -->
+                    <div class="glass-card p-10 rounded-[2rem] group relative overflow-hidden service-card cursor-pointer animate-on-hover" data-service-id="6">
+                        <div
+                            class="mb-6 w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center group-hover:bg-tertiary/20 transition-colors">
+                            <span class="material-symbols-outlined text-tertiary text-3xl"
+                                data-icon="cloud">cloud</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Cloud Infra</h3>
+                        <p class="text-on-surface-variant mb-6">Serverless, edge-computing, and Kubernetes-orchestrated
+                            infrastructure for infinite scaling.</p>
+                        <span class="text-tertiary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore Service <span class="material-symbols-outlined">east</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="projects" class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-reveal">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="font-headline-md text-headline-md mb-4">Featured <span
+                            class="text-primary">Deployments</span></h2>
+                    <p class="text-outline">Recent work from our innovation lab.</p>
+                </div>
+                <button id="view-archive-btn"
+                    class="text-primary font-semibold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                    View Archive <span class="material-symbols-outlined transition-transform duration-300" id="archive-btn-icon">trending_flat</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="group cursor-pointer project-card" data-project-id="1">
+                    <div class="relative rounded-[2.5rem] overflow-hidden aspect-[16/10] mb-8">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            data-alt="A futuristic web dashboard interface with glowing glass panels, deep violet and indigo ambient lighting, showing complex data visualizations and network nodes in a minimalist digital space. The style is ultra-high-definition and professionally polished."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXKv-uWnf6uwVK9p8hI46uYP6hgtIIhmQ2cV0bXZO7RO0GeQTn8a3uv3TA8SvscPGKF4Szznscf-sUBnNR5-QMyN1PRj9eymPJhHiwaOL50BMi2vpoPxFEN90SZ-GMLSEHY9hx60LSCTmcCk43cJccY_TJIge0S7D71j48q6ZXTp64qDaefz2gURU4NII694E59g-aArJZYeUlgl7_m_jx9EbUqz9zbqZVPVUPwqMYB88r--6oyl0DD3rRkrgKjLLDXHaeTdRR3-zY" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8 flex gap-2">
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">Next.js</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">TensorFlow</span>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3">Vanguard OS</h3>
+                    <p class="text-on-surface-variant mb-6">AI-driven predictive maintenance platform for aerospace
+                        manufacturers.</p>
+                    <button
+                        class="text-on-surface font-semibold flex items-center gap-2 underline underline-offset-8 decoration-primary decoration-2">View
+                        Project</button>
+                </div>
+                <!-- Project 2 -->
+                <div class="group cursor-pointer project-card" data-project-id="2">
+                    <div class="relative rounded-[2.5rem] overflow-hidden aspect-[16/10] mb-8">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            data-alt="A sleek mobile application UI showing a cryptocurrency wallet with elegant glassmorphism cards, soft purple gradients, and floating 3D coins. The lighting is moody and atmospheric, focusing on a dark mode interface for premium fintech users."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ_NAN0sjxfntW1Qz4dEKRN8U7yQdlANSGzCfkBoTvLF9p_D0lmnmDvCffv-jcxw1_yREZoILr-s0ft_2lR3tlvUTV5NwTTid_rw7I2x4u8VpiC5BAPQp7ZFAab8WotrtnnBjiuPF9oDVxONZZG_FFCrNy5De483bgYTDPoB2upsx-Siy3A-TbSxRfh1ZHtHBkFoY-6vVua-z-kigg-PZH3x6UWtOZMPVPidrH-rLXqobn_TJ6qimCAzfg4CaA8hKm_lal7cZpsviQ" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8 flex gap-2">
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">Flutter</span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">Solana</span>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3">Aether Wallet</h3>
+                    <p class="text-on-surface-variant mb-6">Institutional grade digital asset management with biometric
+                        encryption.</p>
+                    <button
+                        class="text-on-surface font-semibold flex items-center gap-2 underline underline-offset-8 decoration-primary decoration-2">View
+                        Project</button>
+                </div>
+            </div>
+            <!-- Extra Projects (Hidden by default) -->
+            <div id="extra-projects" class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12 max-h-0 overflow-hidden opacity-0 transition-all duration-700 ease-in-out">
+                <!-- Project 3 -->
+                <div class="group cursor-pointer project-card" data-project-id="3">
+                    <div class="relative rounded-[2.5rem] overflow-hidden aspect-[16/10] mb-8">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            data-alt="A clean, dark cyber-security control room style dashboard showing network status, firewall rules, and an abstract 3D globe representing real-time traffic."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXKv-uWnf6uwVK9p8hI46uYP6hgtIIhmQ2cV0bXZO7RO0GeQTn8a3uv3TA8SvscPGKF4Szznscf-sUBnNR5-QMyN1PRj9eymPJhHiwaOL50BMi2vpoPxFEN90SZ-GMLSEHY9hx60LSCTmcCk43cJccY_TJIge0S7D71j48q6ZXTp64qDaefz2gURU4NII694E59g-aArJZYeUlgl7_m_jx9EbUqz9zbqZVPVUPwqMYB88r--6oyl0DD3rRkrgKjLLDXHaeTdRR3-zY" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8 flex gap-2">
+                            <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">Rust</span>
+                            <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">WebAssembly</span>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3">Nova Ledger</h3>
+                    <p class="text-on-surface-variant mb-6">Blazing fast secure smart contract auditing and visualization engine.</p>
+                    <button class="text-on-surface font-semibold flex items-center gap-2 underline underline-offset-8 decoration-primary decoration-2">View Project</button>
+                </div>
+                <!-- Project 4 -->
+                <div class="group cursor-pointer project-card" data-project-id="4">
+                    <div class="relative rounded-[2.5rem] overflow-hidden aspect-[16/10] mb-8">
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            data-alt="An atmospheric design of a server edge node in a clean rack with cyan glowing LED lights, symbolizing distributed serverless computing."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ_NAN0sjxfntW1Qz4dEKRN8U7yQdlANSGzCfkBoTvLF9p_D0lmnmDvCffv-jcxw1_yREZoILr-s0ft_2lR3tlvUTV5NwTTid_rw7I2x4u8VpiC5BAPQp7ZFAab8WotrtnnBjiuPF9oDVxONZZG_FFCrNy5De483bgYTDPoB2upsx-Siy3A-TbSxRfh1ZHtHBkFoY-6vVua-z-kigg-PZH3x6UWtOZMPVPidrH-rLXqobn_TJ6qimCAzfg4CaA8hKm_lal7cZpsviQ" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+                        <div class="absolute bottom-8 left-8 flex gap-2">
+                            <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">Go</span>
+                            <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">Kubernetes</span>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3">Zephyr Edge</h3>
+                    <p class="text-on-surface-variant mb-6">Edge computing gateway with automatic zero-trust routing.</p>
+                    <button class="text-on-surface font-semibold flex items-center gap-2 underline underline-offset-8 decoration-primary decoration-2">View Project</button>
+                </div>
+            </div>
+        </section>
+        <!-- Team & Testimonials -->
+        <section class="py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-low scroll-reveal">
+            <div class="max-w-container-max mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                    <div class="lg:col-span-1">
+                        <h2 class="font-headline-md text-headline-md mb-8">The <span
+                                class="text-primary">Architects</span> Behind the Code</h2>
+                        <p class="text-on-surface-variant mb-12">Our multidisciplinary team spans 12 countries, united
+                            by a singular obsession with digital perfection.</p>
+                        <div class="space-y-8">
+                            <div class="glass-card p-6 rounded-2xl">
+                                <p class="italic text-on-surface-variant mb-4 font-body-lg">"Nexora Labs delivered a
+                                    product that didn't just meet our specs—it redefined our entire digital strategy.
+                                    Truly exceptional."</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full overflow-hidden">
+                                        <img class="w-full h-full object-cover"
+                                            data-alt="A professional headshot of a female tech executive, soft lighting, minimalist office background, high-end corporate portrait photography."
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxy7t-YmBYujcC1pwW7X3UZHARhdCi_0HqO9awSs6qeVq-RVou_u7ZtO_OH5pgcn6M7nJX3RD-_R5EvN7L8-ZjvLc8UuHeNQWgPnM5yZJpLT_kklTVijt6pQOeV8leiCPwrZ_k3gzzgo8fd3wKHvgGkbBr02N1_IK0HjabEqZLoR8QASd78QG8bAJG5XeRfXOGiJ0dE_WQEPGSml7eavUFCCtRrp1d2G7b3u9qtbteBGmI1Hj7uvhUus53WLIp9_LC3nBspStcflBh" />
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Sarah Chen</p>
+                                        <p class="text-xs text-outline uppercase tracking-wider">CTO, Luminant Data</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <!-- Member 1 -->
+                        <div class="relative group">
+                            <div class="aspect-[4/5] rounded-[2rem] overflow-hidden mb-6">
+                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    data-alt="Portrait of a male developer with glasses looking at the camera, neon purple backlighting, high-tech studio environment, cinematic lighting, sharp detail."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmbeEhOc6x_9esZMT-3Z_z9O58V-OMKmdoDk3Nb8fDMN3aGNI_SuVijUF2YUE8Hf4Aw1sL68s1ve6_-cyCjceAffOjrtdzRCmAvcObu6TZtWg3hIBkT9XmylgwDBn76z-mJ7axE-wWmdRVZinrdlNJKr1u6HKPhBMOICLG4xk4ZMD55d6JjU5jgkcxfLKm42uqbeW7QxX_8R0O6hQ8L0Ui_dlDRnGpwfxHzbdpTEa541L7pAzeDtEufiDNJ9QurM71EJUBqQNqIHkz" />
+                            </div>
+                            <h4 class="text-xl font-bold">Marcus Thorne</h4>
+                            <p class="text-primary font-medium text-sm mb-4">Founder &amp; Lead Architect</p>
+                            <div class="flex gap-3">
+                                <span
+                                    class="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors"
+                                    data-icon="alternate_email">alternate_email</span>
+                                <span
+                                    class="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors"
+                                    data-icon="public">public</span>
+                            </div>
+                        </div>
+                        <!-- Member 2 -->
+                        <div class="relative group">
+                            <div class="aspect-[4/5] rounded-[2rem] overflow-hidden mb-6">
+                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    data-alt="Portrait of a female AI researcher, futuristic aesthetic, cool blue ambient light, minimal high-tech attire, high-end portrait."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlTDsJkS4LhfthfqQmI3Y1I6z1c_TOCnOdaaAaapu11LS9JHtQ8eOaaxuxY11TnapCogvCT3Ns4zEdGXSjMvMNmS_ZltfiHOS8uyUkZdq1v6bufv4EqzPRwtdKhgcIYi6uWb8Aqm3XNHu-YAwhr3WH7-x_E8msT9Vj0xElNwJNkcVDBWIeV6CpU5pw3q-IFdrFx9HGNdyXYM1SE3g00hyolHiKJK1scAp7FjKeSSsPWWxkwMaEpyRWgAjdKVH5zWJuP3NoD6uA3gcc" />
+                            </div>
+                            <h4 class="text-xl font-bold">Elena Rodriguez</h4>
+                            <p class="text-secondary font-medium text-sm mb-4">Head of AI Research</p>
+                            <div class="flex gap-3">
+                                <span
+                                    class="material-symbols-outlined text-outline hover:text-secondary cursor-pointer transition-colors"
+                                    data-icon="alternate_email">alternate_email</span>
+                                <span
+                                    class="material-symbols-outlined text-outline hover:text-secondary cursor-pointer transition-colors"
+                                    data-icon="public">public</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-reveal">
+            <div class="glass-card p-8 md:p-16 rounded-[3rem] overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-1/3 h-full pointer-events-none opacity-20">
+                    <!-- STITCH_SHADER_START:ANIMATION_3 class="w-full h-full" -->
+                    <div class="w-full h-full" style="display:block;">
+                        <canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
+                        <script>
+                            (function () {
+                                const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+
+                                // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+                                // This fires on initial layout and whenever the element is resized.
+                                function syncSize() {
+                                    const w = canvas.clientWidth || 1280;
+                                    const h = canvas.clientHeight || 720;
+                                    if (canvas.width !== w || canvas.height !== h) {
+                                        canvas.width = w;
+                                        canvas.height = h;
+                                    }
+                                }
+                                if (typeof ResizeObserver !== 'undefined') {
+                                    new ResizeObserver(syncSize).observe(canvas);
+                                }
+                                syncSize();
+
+                                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                                if (!gl) return;
+                                const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+                                const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 centered_uv = uv * 2.0 - 1.0;
+    centered_uv.x *= u_resolution.x / u_resolution.y;
+
+    float t = u_time * 0.2;
+    
+    // Create a flowing, ethereal dark gradient with purple/blue hues
+    vec3 color1 = vec3(0.02, 0.02, 0.05); // Deep Black/Blue
+    vec3 color2 = vec3(0.1, 0.05, 0.2);   // Deep Purple
+    vec3 color3 = vec3(0.05, 0.1, 0.2);   // Deep Indigo
+    
+    float noise = sin(centered_uv.x * 2.0 + t) * cos(centered_uv.y * 2.0 - t);
+    noise += sin(centered_uv.y * 3.0 + t * 0.5) * cos(centered_uv.x * 1.5 + t);
+    
+    vec3 finalColor = mix(color1, color2, 0.5 + 0.5 * sin(noise + t));
+    finalColor = mix(finalColor, color3, 0.5 + 0.5 * cos(noise * 0.5 - t * 0.3));
+    
+    // Add subtle grain
+    float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+    finalColor += grain * 0.02;
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+                                function cs(type, src) {
+                                    const s = gl.createShader(type);
+                                    gl.shaderSource(s, src);
+                                    gl.compileShader(s);
+                                    return s;
+                                }
+                                const prog = gl.createProgram();
+                                gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+                                gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+                                gl.linkProgram(prog);
+                                gl.useProgram(prog);
+                                const buf = gl.createBuffer();
+                                gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+                                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+                                const pos = gl.getAttribLocation(prog, 'a_position');
+                                gl.enableVertexAttribArray(pos);
+                                gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+                                const uTime = gl.getUniformLocation(prog, 'u_time');
+                                const uRes = gl.getUniformLocation(prog, 'u_resolution');
+                                const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+                                // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+                                // Shaders that need normalized coords should use: u_mouse / u_resolution.
+                                let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+                                window.addEventListener('mousemove', (event) => {
+                                    const rect = canvas.getBoundingClientRect();
+                                    if (rect.width && rect.height) {
+                                        const nx = (event.clientX - rect.left) / rect.width;
+                                        const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+                                        mouse.x = nx * canvas.width;
+                                        mouse.y = ny * canvas.height;
+                                    }
+                                });
+
+                                function render(t) {
+                                    if (typeof ResizeObserver === 'undefined') syncSize();
+                                    gl.viewport(0, 0, canvas.width, canvas.height);
+                                    if (uTime) gl.uniform1f(uTime, t * 0.001);
+                                    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+                                    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+                                    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                                    requestAnimationFrame(render);
+                                }
+                                render(0);
+                            })();
+                        </script>
+                    </div>
+                    <!-- STITCH_SHADER_END:ANIMATION_3 -->
+                </div>
+                <div class="flex flex-col lg:flex-row gap-16">
+                    <div class="w-full lg:w-1/2">
+                        <h2 class="font-display-lg-mobile md:font-headline-md text-headline-md mb-8">Let's Build the
+                            <span class="text-primary">Future</span></h2>
+                        <form id="contact-form" class="space-y-6" novalidate>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-sm font-semibold text-outline" for="contact-name">Full Name</label>
+                                    <input id="contact-name" name="name" required
+                                        class="w-full bg-surface-container border border-outline-variant rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                                        placeholder="John Doe" type="text" />
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-sm font-semibold text-outline" for="contact-email">Work Email</label>
+                                    <input id="contact-email" name="email" required
+                                        class="w-full bg-surface-container border border-outline-variant rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                                        placeholder="john@company.com" type="email" />
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-outline" for="contact-project">Project Overview</label>
+                                <textarea id="contact-project" name="project" required
+                                    class="w-full bg-surface-container border border-outline-variant rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                                    placeholder="Tell us about your vision..." rows="4"></textarea>
+                            </div>
+                            <button id="contact-submit-btn" type="submit"
+                                class="w-full primary-gradient py-5 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                                Send Inquiry
+                            </button>
+                        </form>
+                    </div>
+                    <div class="w-full lg:w-1/2 space-y-12">
+                        <div>
+                            <h4 class="text-xl font-bold mb-6">Global Headquarters</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+                                    <div>
+                                        <p class="font-medium">100 Innovation Plaza</p>
+                                        <p class="text-outline">San Francisco, CA 94105</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-primary mt-1">mail</span>
+                                    <p class="font-medium">hello@nexora-labs.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="w-full aspect-video rounded-3xl overflow-hidden border border-outline-variant bg-surface-container-high relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <p class="text-outline font-label-sm uppercase tracking-[0.2em]">Map View: San Francisco
+                                </p>
+                            </div>
+                            <img class="w-full h-full object-cover opacity-40" data-location="San Francisco"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_DyaBCEnjhwk-lXTbo2cb2AgQyZSLL_gqDNdzCfnoti1vzyBQTTB5btdVg4eN5rAnHgQlNqoQWUedYahmBZ0iOa3XTKrFCdD5uaGZRURDFvToyaRhUNmOY95HSWEseG-AYMnkexFspIRaN6mrS_VOvp8C0d5Tn7_L3bDodCwps43n3J4G7Xs2wwc4AiwFRwUjf5UJ746ebyieGGf-eExQC9mjATqXE4s1JpvTVHRFfHUPQhDDENIaXFzL4Olcp2OkSwZ1UxIMKRv5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant mt-20">
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-6 md:px-margin-desktop py-16 max-w-container-max mx-auto">
+            <div class="col-span-1 md:col-span-1">
+                <div class="font-headline-md text-headline-md text-on-surface mb-6">
+                    Nexora Labs
+                </div>
+                <p class="text-outline font-body-md mb-8">Forging the Digital Future through precision AI and premium
+                    engineering.</p>
+            </div>
+            <div class="col-span-1">
+                <h5 class="text-on-surface font-bold mb-6 uppercase tracking-widest text-xs">Platform</h5>
+                <ul class="space-y-4 text-outline font-label-sm">
+                    <li><a class="hover:text-primary transition-colors" href="#solutions">Solutions</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#projects">Lab Ecosystem</a></li>
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="Open Source center is launching in Q3 2026. Stay tuned!">Open Source</a></li>
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="Nexora Labs is fully ISO 27001 certified. Our complete security audits and compliance sheets can be requested by emailing security@nexora-labs.com.">Security</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1">
+                <h5 class="text-on-surface font-bold mb-6 uppercase tracking-widest text-xs">Resources</h5>
+                <ul class="space-y-4 text-outline font-label-sm">
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="Documentation portals are accessible only to authenticated enterprise clients. Contact your project lead or support for login details.">Documentation</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#projects">Case Studies</a></li>
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="Our research insights newsletter is published monthly. Sign up form is currently under active development.">Insights</a></li>
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="All systems operational. Uptime: 99.98% over the last 90 days.">API Status</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1">
+                <h5 class="text-on-surface font-bold mb-6 uppercase tracking-widest text-xs">Company</h5>
+                <ul class="space-y-4 text-outline font-label-sm">
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="Privacy Policy: Nexora Labs respects your privacy. We process contact form submissions only to respond to inquiries, storing metadata for up to 30 days. No trackers or third-party cookies are used on this site.">Privacy Policy</a></li>
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="Terms of Service: By using this site, you agree to our standard terms of use. Content published is proprietary. Services are provided under bilateral custom engineering SLAs.">Terms of Service</a></li>
+                    <li><a class="hover:text-primary transition-colors footer-notice-link" href="#" data-notice="Nexora Labs is fully ISO 27001 certified. Our complete security audits and compliance sheets can be requested by emailing security@nexora-labs.com.">Security</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="border-t border-outline-variant py-8 px-6 md:px-margin-desktop text-center text-outline font-label-sm text-label-sm max-w-container-max mx-auto">
+            © 2024 Nexora Labs. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Reusable Info Modal -->
+    <div id="info-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 opacity-0 pointer-events-none transition-all duration-300 bg-black/70 backdrop-blur-md">
+        <div id="info-modal-card" class="glass-card w-full max-w-2xl rounded-[2rem] p-6 md:p-10 relative shadow-[0_0_50px_rgba(192,193,255,0.15)] max-h-[85vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+            <!-- Close Button -->
+            <button id="modal-close-btn" class="absolute top-4 right-4 md:top-6 md:right-6 text-outline hover:text-on-surface bg-white/5 hover:bg-white/10 w-10 h-10 rounded-full flex items-center justify-center transition-all focus:outline-none" aria-label="Close Modal">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <!-- Modal Body Content -->
+            <div id="modal-content" class="space-y-6">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 opacity-0 pointer-events-none transition-all duration-300 bg-black/70 backdrop-blur-md">
+        <div id="success-modal-card" class="glass-card w-full max-w-md rounded-[2rem] p-8 text-center relative shadow-[0_0_50px_rgba(111,0,190,0.2)] transform scale-95 transition-transform duration-300">
+            <div class="mx-auto w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
+                <span class="material-symbols-outlined text-primary text-5xl animate-pulse">done_all</span>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 gradient-text">Inquiry Received!</h3>
+            <p class="text-on-surface-variant mb-8 leading-relaxed">
+                Thank you for contacting Nexora Labs. An elite solutions architect has been assigned to your request and will follow up within <span class="text-primary font-semibold">4 hours</span>.
+            </p>
+            <button id="success-close-btn" class="primary-gradient w-full py-4 rounded-xl font-bold text-on-primary hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+                Acknowledge
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Services details data
+        const servicesData = {
+            "1": {
+                title: "AI & Machine Learning",
+                subtitle: "Frontier Intelligence for Complex Workflows",
+                icon: "psychology",
+                iconColor: "text-primary",
+                description: "Nexora Labs builds proprietary Large Language Models (LLMs), predictive analytics engines, and advanced computer vision systems customized to your business goals. We specialize in fine-tuning, retrieval-augmented generation (RAG), and cost-efficient edge execution.",
+                features: [
+                    "Domain-Specific LLM Fine-Tuning",
+                    "Multi-Modal Computer Vision Pipelines",
+                    "Predictive Forecasting & Modeling",
+                    "Retrieval-Augmented Generation (RAG)"
+                ],
+                techStack: ["PyTorch", "TensorFlow", "HuggingFace", "LangChain", "OpenAI API", "Python"]
+            },
+            "2": {
+                title: "Web Engineering",
+                subtitle: "Uncompromising Velocity and Scale",
+                icon: "terminal",
+                iconColor: "text-secondary",
+                description: "We engineer hyper-performance web applications that demand ultra-fast latency, custom interactivity, and heavy server-side loads. Our architectures employ edge computing, caching layers, and modular frameworks for long-term scalability.",
+                features: [
+                    "Edge-Rendered Web Applications",
+                    "Custom Component-Driven UI Frameworks",
+                    "Secure RESTful & GraphQL Endpoints",
+                    "WASM Integration for Complex Web Tasks"
+                ],
+                techStack: ["Next.js", "React", "TypeScript", "Rust", "WebAssembly", "TailwindCSS"]
+            },
+            "3": {
+                title: "Mobile Experiences",
+                subtitle: "Fluid Dynamics and Native Precision",
+                icon: "smartphone",
+                iconColor: "text-tertiary",
+                description: "We build native and cross-platform mobile apps targeting seamless transitions, touch dynamics, and zero-latency performance. We build with an offline-first philosophy ensuring uninterrupted workflows in variable network zones.",
+                features: [
+                    "Smooth 120Hz Fluid Gesture Systems",
+                    "Local Offline SQLite/Room Caching",
+                    "Native Hardware Integrations",
+                    "Real-time Sensor Data Pipelines"
+                ],
+                techStack: ["Flutter", "Kotlin", "SwiftUI", "SQLite", "Firebase", "Dart"]
+            },
+            "4": {
+                title: "Premium UI/UX",
+                subtitle: "Breathtaking Digital Artistry",
+                icon: "palette",
+                iconColor: "text-primary",
+                description: "We design software surfaces that don't just solve problems—they tell stories. Combining moody high-end dark modes, micro-animations, clean typography, and interactive components, we craft experiences that evoke elegance and drive engagement.",
+                features: [
+                    "Ethereal Dark Modes & Glassmorphism Design",
+                    "Interactive Prototypes & Storyboarding",
+                    "Bespoke Vector Illustrations & Icons",
+                    "Complex Micro-Interaction Systems"
+                ],
+                techStack: ["Figma", "CSS Shaders", "Lottie Web", "Framer Motion", "Spline 3D"]
+            },
+            "5": {
+                title: "Automation",
+                subtitle: "Removing Human Friction from Production",
+                icon: "auto_mode",
+                iconColor: "text-secondary",
+                description: "We develop custom Robotic Process Automation (RPA) and automated tooling that replace high-cost labor tasks with secure, self-healing software scripts. Our bots process logs, manage migrations, and alert operations autonomously.",
+                features: [
+                    "Self-Healing Operations Pipelines",
+                    "Multi-Platform Browser Bot Scripts",
+                    "Legacy System API Bridges",
+                    "Intelligent Text Document Parsing"
+                ],
+                techStack: ["Node.js", "Python", "Puppeteer", "Docker", "Apache Airflow"]
+            },
+            "6": {
+                title: "Cloud Infra",
+                subtitle: "Zero-Trust Scalability and Edge Control",
+                icon: "cloud",
+                iconColor: "text-tertiary",
+                description: "Our systems architects draft and deploy serverless cloud spaces, edge CDNs, and multi-region failover Kubernetes configurations. We build with strict zero-trust security profiles ensuring extreme data isolation.",
+                features: [
+                    "Zero-Trust Cloud Identity Management",
+                    "Automated Terraform Infrastructure Deployment",
+                    "Distributed Kubernetes Multi-Region Cluster",
+                    "Ethereal CDN Edge Computing Optimization"
+                ],
+                techStack: ["AWS", "Google Cloud", "Kubernetes", "Terraform", "Cloudflare Workers", "Docker"]
+            }
+        };
+
+        // Projects details data
+        const projectsData = {
+            "1": {
+                title: "Vanguard OS",
+                subtitle: "Aerospace Predictive Maintenance",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXKv-uWnf6uwVK9p8hI46uYP6hgtIIhmQ2cV0bXZO7RO0GeQTn8a3uv3TA8SvscPGKF4Szznscf-sUBnNR5-QMyN1PRj9eymPJhHiwaOL50BMi2vpoPxFEN90SZ-GMLSEHY9hx60LSCTmcCk43cJccY_TJIge0S7D71j48q6ZXTp64qDaefz2gURU4NII694E59g-aArJZYeUlgl7_m_jx9EbUqz9zbqZVPVUPwqMYB88r--6oyl0DD3rRkrgKjLLDXHaeTdRR3-zY",
+                tags: ["Next.js", "TensorFlow", "Rust"],
+                description: "Vanguard OS monitors telemetry data streams from commercial aerospace turbine parts, forecasting failure rates before they manifest. Nexora Labs integrated a Rust-based parsing engine processing 10GB/s of streaming parameters, and linked it to a gorgeous real-time monitoring Next.js dashboard.",
+                results: [
+                    "Decreased unscheduled maintenance by 34%",
+                    "Processed telemetry metrics with sub-5ms latency",
+                    "Protected data using localized secure enclave keys"
+                ],
+                client: "AeroDynamics Global"
+            },
+            "2": {
+                title: "Aether Wallet",
+                subtitle: "Fintech Institutional Custody",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQ_NAN0sjxfntW1Qz4dEKRN8U7yQdlANSGzCfkBoTvLF9p_D0lmnmDvCffv-jcxw1_yREZoILr-s0ft_2lR3tlvUTV5NwTTid_rw7I2x4u8VpiC5BAPQp7ZFAab8WotrtnnBjiuPF9oDVxONZZG_FFCrNy5De483bgYTDPoB2upsx-Siy3A-TbSxRfh1ZHtHBkFoY-6vVua-z-kigg-PZH3x6UWtOZMPVPidrH-rLXqobn_TJ6qimCAzfg4CaA8hKm_lal7cZpsviQ",
+                tags: ["Flutter", "Solana", "Biometrics"],
+                description: "Aether Wallet provides institutional cryptocurrency custody using Multi-Party Computation (MPC) algorithms. Built as a dual iOS and Android mobile app, it supports biometric key-splitting, Solana RPC integrations, and dynamic hardware wallet authorizations.",
+                results: [
+                    "Secured $140M+ in assets under management",
+                    "Zero vulnerabilities reported during audit",
+                    "Instant multi-sig approvals completed under 2 seconds"
+                ],
+                client: "Vanguard Asset Management"
+            },
+            "3": {
+                title: "Nova Ledger",
+                subtitle: "Smart Contract Visualization Engine",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXKv-uWnf6uwVK9p8hI46uYP6hgtIIhmQ2cV0bXZO7RO0GeQTn8a3uv3TA8SvscPGKF4Szznscf-sUBnNR5-QMyN1PRj9eymPJhHiwaOL50BMi2vpoPxFEN90SZ-GMLSEHY9hx60LSCTmcCk43cJccY_TJIge0S7D71j48q6ZXTp64qDaefz2gURU4NII694E59g-aArJZYeUlgl7_m_jx9EbUqz9zbqZVPVUPwqMYB88r--6oyl0DD3rRkrgKjLLDXHaeTdRR3-zY",
+                tags: ["Rust", "WebAssembly", "Go"],
+                description: "Nova Ledger reads smart contract code from Github repos, parses functions into abstract syntax trees in Rust, and compiles them to WebAssembly to draw interactive visual dependence diagrams directly in the browser.",
+                results: [
+                    "Reduced onboarding time for security auditors by 60%",
+                    "Analyzed 12,000+ lines of Solidity code in 1.2 seconds",
+                    "Integrated smoothly with standard GitHub CI/CD workflows"
+                ],
+                client: "Consensual Security"
+            },
+            "4": {
+                title: "Zephyr Edge",
+                subtitle: "Distributed Serverless Routing",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQ_NAN0sjxfntW1Qz4dEKRN8U7yQdlANSGzCfkBoTvLF9p_D0lmnmDvCffv-jcxw1_yREZoILr-s0ft_2lR3tlvUTV5NwTTid_rw7I2x4u8VpiC5BAPQp7ZFAab8WotrtnnBjiuPF9oDVxONZZG_FFCrNy5De483bgYTDPoB2upsx-Siy3A-TbSxRfh1ZHtHBkFoY-6vVua-z-kigg-PZH3x6UWtOZMPVPidrH-rLXqobn_TJ6qimCAzfg4CaA8hKm_lal7cZpsviQ",
+                tags: ["Go", "Kubernetes", "gRPC"],
+                description: "Zephyr Edge is a zero-trust gateway for distributed microservices. It intercepts request streams and proxies them using optimized multiplexed gRPC tunnels across edge nodes, keeping traffic away from public internet pathways.",
+                results: [
+                    "Lowered API response times globally by 150ms",
+                    "Eliminated DDoS threat vectors entirely on edge networks",
+                    "Deployed dynamic micro-routing logic under 100ms"
+                ],
+                client: "Skyline Telecom"
+            }
+        };
+
+        // Scroll Reveal Logic
+        const revealItems = document.querySelectorAll('.scroll-reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealItems.forEach(item => revealObserver.observe(item));
+
+        // Animated Counter Logic
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = target / 50;
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            entry.target.innerText = Math.ceil(current) + (entry.target.innerText.includes('%') || target === 98 ? '%' : '+');
+                            setTimeout(updateCounter, 20);
+                        } else {
+                            entry.target.innerText = target + (target === 98 ? '%' : '+');
+                        }
+                    };
+                    updateCounter();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Mobile Menu Logic
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+        function toggleMobileMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('max-h-0');
+                    mobileMenu.classList.add('max-h-[400px]');
+                }, 10);
+                mobileMenuIcon.innerText = 'close';
+                mobileMenuIcon.style.transform = 'rotate(90deg)';
+                mobileMenuIcon.style.transition = 'transform 0.3s ease';
+            } else {
+                mobileMenu.classList.remove('max-h-[400px]');
+                mobileMenu.classList.add('max-h-0');
+                mobileMenuIcon.innerText = 'menu';
+                mobileMenuIcon.style.transform = 'rotate(0deg)';
+                mobileMenuIcon.style.transition = 'transform 0.3s ease';
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close mobile menu when link clicked
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Smooth scrolling mapping for all anchors and specific CTA buttons
+        const smoothScrollTo = (targetId) => {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        };
+
+        // Bind standard links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href').slice(1);
+                if (targetId) {
+                    e.preventDefault();
+                    smoothScrollTo(targetId);
+                }
+            });
+        });
+
+        // Brand logo scroll to top
+        const navLogo = document.getElementById('nav-logo');
+        if (navLogo) {
+            navLogo.addEventListener('click', () => {
+                smoothScrollTo('hero');
+            });
+        }
+
+        // Get Started navbar button -> scrolls to contact
+        const getStartedNavBtn = document.getElementById('get-started-nav-btn');
+        if (getStartedNavBtn) {
+            getStartedNavBtn.addEventListener('click', () => {
+                smoothScrollTo('contact');
+            });
+        }
+
+        // Mobile Get Started navbar button
+        const mobileGetStartedBtn = document.getElementById('mobile-get-started-btn');
+        if (mobileGetStartedBtn) {
+            mobileGetStartedBtn.addEventListener('click', () => {
+                toggleMobileMenu();
+                smoothScrollTo('contact');
+            });
+        }
+
+        // Hero buttons
+        const heroLaunchBtn = document.getElementById('hero-launch-btn');
+        if (heroLaunchBtn) {
+            heroLaunchBtn.addEventListener('click', () => {
+                smoothScrollTo('contact');
+            });
+        }
+
+        const heroViewEcosystemBtn = document.getElementById('hero-view-ecosystem-btn');
+        if (heroViewEcosystemBtn) {
+            heroViewEcosystemBtn.addEventListener('click', () => {
+                smoothScrollTo('projects');
+            });
+        }
+
+        // Active Section Highlights in Navigation Links
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 250)) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'border-primary');
+                link.classList.add('text-on-surface-variant', 'border-transparent');
+            });
+
+            if (currentSectionId) {
+                let targetLink;
+                if (currentSectionId === 'projects') {
+                    targetLink = document.querySelector(`.nav-link[href="#projects"]`); // default highlight Labs
+                } else {
+                    targetLink = document.querySelector(`.nav-link[href="#${currentSectionId}"]`);
+                }
+                if (targetLink) {
+                    targetLink.classList.add('text-primary', 'border-primary');
+                    targetLink.classList.remove('text-on-surface-variant', 'border-transparent');
+                }
+            }
+        });
+
+        // Reusable Modal opening / closing logic
+        const infoModal = document.getElementById('info-modal');
+        const infoModalCard = document.getElementById('info-modal-card');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const modalContent = document.getElementById('modal-content');
+
+        function openInfoModal(htmlContent) {
+            modalContent.innerHTML = htmlContent;
+            infoModal.classList.remove('pointer-events-none', 'opacity-0');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+            setTimeout(() => {
+                infoModalCard.classList.remove('scale-95');
+                infoModalCard.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeInfoModal() {
+            infoModalCard.classList.remove('scale-100');
+            infoModalCard.classList.add('scale-95');
+            setTimeout(() => {
+                infoModal.classList.add('pointer-events-none', 'opacity-0');
+                document.body.style.overflow = '';
+            }, 200);
+        }
+
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', closeInfoModal);
+        }
+
+        // Close on backdrop click
+        infoModal.addEventListener('click', (e) => {
+            if (e.target === infoModal) {
+                closeInfoModal();
+            }
+        });
+
+        // Close modal on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeInfoModal();
+                closeSuccessModal();
+            }
+        });
+
+        // Bind Service Cards Click
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const serviceId = card.getAttribute('data-service-id');
+                const service = servicesData[serviceId];
+                if (service) {
+                    const techStackHtml = service.techStack.map(tech => 
+                        `<span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold">${tech}</span>`
+                    ).join('');
+
+                    const featuresHtml = service.features.map(feat => 
+                        `<li class="flex items-start gap-3 text-on-surface-variant text-body-md">
+                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">verified</span>
+                            <span>${feat}</span>
+                         </li>`
+                    ).join('');
+
+                    const modalHtml = `
+                        <div class="flex items-center gap-4 border-b border-white/10 pb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                                <span class="material-symbols-outlined text-primary text-4xl">${service.icon}</span>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-on-surface">${service.title}</h3>
+                                <p class="text-primary font-medium text-sm mt-1">${service.subtitle}</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6 pt-4">
+                            <p class="text-on-surface-variant text-body-lg leading-relaxed">${service.description}</p>
+                            
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-lg text-on-surface">Key Capabilities</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${featuresHtml}
+                                </ul>
+                            </div>
+                            
+                            <div class="space-y-3 border-t border-white/10 pt-6">
+                                <h4 class="font-bold text-sm text-outline uppercase tracking-wider">Technologies We Use</h4>
+                                <div class="flex flex-wrap gap-2.5">
+                                    ${techStackHtml}
+                                </div>
+                            </div>
+                            
+                            <div class="pt-6">
+                                <button id="modal-service-cta" class="w-full primary-gradient py-4 rounded-xl text-on-primary font-bold hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 flex items-center justify-center gap-2">
+                                    Inquire About This Service
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    openInfoModal(modalHtml);
+
+                    // Add listener to the dynamic button inside the modal
+                    document.getElementById('modal-service-cta').addEventListener('click', () => {
+                        closeInfoModal();
+                        smoothScrollTo('contact');
+                        const projectField = document.getElementById('contact-project');
+                        if (projectField) {
+                            projectField.value = `I am interested in ${service.title} solutions. Please tell me more about how we can collaborate.`;
+                            projectField.focus();
+                        }
+                    });
+                }
+            });
+        });
+
+        // Bind Projects Cards Click
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const projectId = card.getAttribute('data-project-id');
+                const project = projectsData[projectId];
+                if (project) {
+                    const tagsHtml = project.tags.map(tag => 
+                        `<span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold uppercase tracking-widest text-white border border-white/20">${tag}</span>`
+                    ).join('');
+
+                    const resultsHtml = project.results.map(res => 
+                        `<li class="flex items-start gap-3 text-on-surface-variant text-body-md">
+                            <span class="material-symbols-outlined text-secondary text-xl mt-0.5">trending_up</span>
+                            <span>${res}</span>
+                         </li>`
+                    ).join('');
+
+                    const modalHtml = `
+                        <div class="space-y-6">
+                            <div class="relative rounded-[1.5rem] overflow-hidden aspect-[16/9] border border-white/10 shadow-lg">
+                                <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 flex gap-2">
+                                    ${tagsHtml}
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/10 pb-6">
+                                <span class="font-label-sm text-xs text-secondary uppercase tracking-widest font-semibold">${project.client}</span>
+                                <h3 class="text-4xl font-bold text-on-surface mt-1">${project.title}</h3>
+                                <p class="text-outline text-sm mt-1">${project.subtitle}</p>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <p class="text-on-surface-variant text-body-lg leading-relaxed">${project.description}</p>
+                                
+                                <div class="space-y-4">
+                                    <h4 class="font-bold text-lg text-on-surface">Client Results</h4>
+                                    <ul class="space-y-3">
+                                        ${resultsHtml}
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row gap-4">
+                                <button id="modal-project-cta" class="w-full primary-gradient py-4 rounded-xl text-on-primary font-bold hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+                                    Start a Similar Project
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    openInfoModal(modalHtml);
+
+                    // Add listener to the dynamic button inside the modal
+                    document.getElementById('modal-project-cta').addEventListener('click', () => {
+                        closeInfoModal();
+                        smoothScrollTo('contact');
+                        const projectField = document.getElementById('contact-project');
+                        if (projectField) {
+                            projectField.value = `I was inspired by your "${project.title}" deployment. We would like to develop a similar high-performance solution.`;
+                            projectField.focus();
+                        }
+                    });
+                }
+            });
+        });
+
+        // Expandable Archive Grid ("View Archive")
+        const viewArchiveBtn = document.getElementById('view-archive-btn');
+        const archiveBtnIcon = document.getElementById('archive-btn-icon');
+        const extraProjectsGrid = document.getElementById('extra-projects');
+
+        if (viewArchiveBtn && extraProjectsGrid) {
+            viewArchiveBtn.addEventListener('click', () => {
+                const isExpanded = extraProjectsGrid.classList.contains('opacity-100');
+                if (isExpanded) {
+                    // Collapse
+                    extraProjectsGrid.style.maxHeight = '0px';
+                    extraProjectsGrid.classList.remove('opacity-100');
+                    extraProjectsGrid.classList.add('opacity-0');
+                    viewArchiveBtn.childNodes[0].textContent = 'View Archive ';
+                    if (archiveBtnIcon) {
+                        archiveBtnIcon.innerText = 'trending_flat';
+                        archiveBtnIcon.style.transform = 'rotate(0deg)';
+                    }
+                } else {
+                    // Expand
+                    extraProjectsGrid.classList.remove('opacity-0');
+                    extraProjectsGrid.classList.add('opacity-100');
+                    // Scrollheight provides the exact height content takes
+                    extraProjectsGrid.style.maxHeight = extraProjectsGrid.scrollHeight + 100 + 'px';
+                    viewArchiveBtn.childNodes[0].textContent = 'Collapse Archive ';
+                    if (archiveBtnIcon) {
+                        archiveBtnIcon.innerText = 'close';
+                        archiveBtnIcon.style.transform = 'rotate(180deg)';
+                    }
+                    
+                    // Smooth scroll slightly down to make sure new items are visible
+                    setTimeout(() => {
+                        extraProjectsGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 300);
+                }
+            });
+        }
+
+        // Footer placeholders custom notice modal
+        document.querySelectorAll('.footer-notice-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const noticeText = link.getAttribute('data-notice');
+                const titleText = link.innerText;
+                const modalHtml = `
+                    <div class="text-center space-y-6 pt-4">
+                        <div class="mx-auto w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
+                            <span class="material-symbols-outlined text-secondary text-4xl">info</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-on-surface">${titleText}</h3>
+                        <p class="text-on-surface-variant text-body-lg leading-relaxed">${noticeText}</p>
+                        <div class="pt-6">
+                            <button id="notice-close-btn" class="w-full primary-gradient py-4 rounded-xl text-on-primary font-bold hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+                                Close Notice
+                            </button>
+                        </div>
+                    </div>
+                `;
+                openInfoModal(modalHtml);
+                
+                document.getElementById('notice-close-btn').addEventListener('click', () => {
+                    closeInfoModal();
+                });
+            });
+        });
+
+        // Contact Form validation and ethereal Success Modal trigger
+        const contactForm = document.getElementById('contact-form');
+        const contactSubmitBtn = document.getElementById('contact-submit-btn');
+        const successModal = document.getElementById('success-modal');
+        const successModalCard = document.getElementById('success-modal-card');
+        const successCloseBtn = document.getElementById('success-close-btn');
+
+        function openSuccessModal() {
+            successModal.classList.remove('pointer-events-none', 'opacity-0');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                successModalCard.classList.remove('scale-95');
+                successModalCard.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeSuccessModal() {
+            successModalCard.classList.remove('scale-100');
+            successModalCard.classList.add('scale-95');
+            setTimeout(() => {
+                successModal.classList.add('pointer-events-none', 'opacity-0');
+                document.body.style.overflow = '';
+            }, 200);
+        }
+
+        if (successCloseBtn) {
+            successCloseBtn.addEventListener('click', closeSuccessModal);
+        }
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                closeSuccessModal();
+            }
+        });
+
+        // Live input validation highlights
+        const inputs = [
+            document.getElementById('contact-name'),
+            document.getElementById('contact-email'),
+            document.getElementById('contact-project')
+        ];
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function highlightField(input, isValid) {
+            if (isValid) {
+                input.classList.remove('border-error-container', 'shadow-[0_0_10px_rgba(147,0,10,0.25)]');
+                input.classList.add('border-outline-variant');
+            } else {
+                input.classList.add('border-error-container', 'shadow-[0_0_10px_rgba(147,0,10,0.25)]');
+                input.classList.remove('border-outline-variant');
+            }
+        }
+
+        inputs.forEach(input => {
+            if (input) {
+                input.addEventListener('input', () => {
+                    if (input.type === 'email') {
+                        highlightField(input, validateEmail(input.value));
+                    } else {
+                        highlightField(input, input.value.trim().length > 0);
+                    }
+                });
+            }
+        });
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isFormValid = true;
+
+                inputs.forEach(input => {
+                    if (input) {
+                        let fieldValid = true;
+                        if (input.type === 'email') {
+                            fieldValid = validateEmail(input.value);
+                        } else {
+                            fieldValid = input.value.trim().length > 0;
+                        }
+                        highlightField(input, fieldValid);
+                        if (!fieldValid) isFormValid = false;
+                    }
+                });
+
+                if (isFormValid) {
+                    // Loading State
+                    const originalBtnContent = contactSubmitBtn.innerHTML;
+                    contactSubmitBtn.disabled = true;
+                    contactSubmitBtn.innerHTML = `
+                        <div class="w-6 h-6 border-2 border-on-primary border-t-transparent rounded-full animate-spin"></div>
+                        Processing...
+                    `;
+                    
+                    inputs.forEach(input => { if (input) input.disabled = true; });
+
+                    // Simulating API Delay
+                    setTimeout(() => {
+                        // Reset Form
+                        inputs.forEach(input => {
+                            if (input) {
+                                input.value = '';
+                                input.disabled = false;
+                            }
+                        });
+                        contactSubmitBtn.disabled = false;
+                        contactSubmitBtn.innerHTML = originalBtnContent;
+                        
+                        // Open Success Screen
+                        openSuccessModal();
+                    }, 1500);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
